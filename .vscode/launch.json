@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TestdtoApplication<testdto>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.dto.testdto.TestdtoApplication",
+            "projectName": "testdto",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
