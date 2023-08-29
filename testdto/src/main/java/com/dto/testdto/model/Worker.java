@@ -44,6 +44,7 @@ public class Worker {
     @Column(name="updated_at")
     private LocalDateTime updatedAt;
 
+    //join the column 
     @OneToOne(fetch = FetchType.EAGER,optional = false)
     @JoinColumn(name = "id_account")
     private User user;

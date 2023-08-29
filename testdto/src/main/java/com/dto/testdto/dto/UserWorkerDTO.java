@@ -2,6 +2,7 @@ package com.dto.testdto.dto;
 
 import lombok.Data;
 
+//combine the model you want to in this file
 @Data
 public class UserWorkerDTO {
     private String name;

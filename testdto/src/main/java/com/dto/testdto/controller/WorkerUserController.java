@@ -24,16 +24,21 @@ import java.util.Optional;
 @RequestMapping(value="/user-worker")
 public class WorkerUserController {
 
+    //insert repo for the both model
     private UserRepository userRepo;
     private WorkerRepository workerRepo;
 
+    //inject the both repo by creating argument constructor
     @Autowired
     public WorkerUserController(UserRepository userRepo, WorkerRepository workerRepo) {
         this.userRepo = userRepo;
         this.workerRepo = workerRepo;
     }
 
-        
+    //for getmapping first you must create arraylist
+    //then findall 
+    //loop foreach user find the worker by using worker repo and findbyuser
+    //create instance for the DTO and then set what information that you want to get
     @GetMapping(value="/alluser")
     public ResponseEntity<List<UserWorkerDTO>> getUser(){
         List<UserWorkerDTO> workerUser = new ArrayList<>();
@@ -57,6 +62,10 @@ public class WorkerUserController {
         return ResponseEntity.ok(workerUser);
     }
 
+    //for postmapping you must create the data based on the table 
+    //create instance for each table and then put the column to be input inside the instance
+    //must follow the order in the argument constructor if not the data will be switch when post request
+    //save
     @PostMapping(value="/register")
     public Worker addUser(@RequestBody UserWorkerDTO userWorkerDTO){
         User user = new User(
@@ -79,6 +88,11 @@ public class WorkerUserController {
         return worker;
     }
 
+    //for putmapping first must get path variable which is id
+    //then use optional and use worker repo to find the user by id
+    //set statement if the optional is not null then create instance for worker 
+    //then create intance for worker by using get method that already declared in worker model
+    //set the column to be update by using setter and getter method then save it
     @PutMapping(value="/update-user/{idWorker}")
     public ResponseEntity<Worker> updateUser(@PathVariable String idWorker, @RequestBody UserWorkerDTO userWorkerDTO)
     {
@@ -108,6 +122,10 @@ public class WorkerUserController {
         }
     }
 
+    //for deletemapping first you must use path variable to get the id to be delete
+    //then create optional for worker and find the worker using id
+    //after that use if statement and get the worker and the user
+    //you must delete the child first before delete the parent table or else it will throw error.
     @DeleteMapping(value="/delete-user/{idWorker}")
     public ResponseEntity<String> deleteUser(@PathVariable String idWorker)
     {
